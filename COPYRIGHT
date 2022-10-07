@@ -1,0 +1,22 @@
+Portions of this software are covered by the following copyright:
+
+        Copyright (c) 1989 Douglas E. Comer, Steven Munson, and
+                        Prentice Hall, Inc. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that this notice is preserved and that due credit is given
+to the copyright holders. The names of the copyright holders
+may not be used to endorse or promote products derived from this
+software without specific prior written permission. This software
+is provided as is'' without express or implied warranty. The author
+assumes no liability for damages incidental or consequential, nor is the
+software warranted for correctness or suitability for any purpose.
+        Portions of this software are documented in the book:
+
+        Operating System Design -- The Xinu Approach, Macintosh Edition,
+        Comer, D. and Munson, S., Operating System Design Vol. I: The 
+        Xinu Approach, Macintosh edition\fP, Prentice-Hall, Upper Saddle
+        River, NJ, 1989.
+
+This software may not be published in a textbook without written 
+permission from the copyright holders.
