@@ -1,0 +1,20 @@
+.TH KILL 1
+.SH NAME
+kill \- terminate a process
+.SH SYNOPSIS
+.B kill processid
+.fi
+.SH DESCRIPTION
+.I Kill
+kills the process with id given by argument
+.I processid.
+The
+.I kill
+shell command invokes the system call
+.I kill,
+allowing it to terminate the named process.
+Termination is final and permanent.
+All record of the process is removed, so the process cannot be
+recovered or continue.
+.SH SEE ALSO
+kill(2), ps(1)

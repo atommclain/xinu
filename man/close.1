@@ -1,0 +1,16 @@
+.TH CLOSE 1
+.SH NAME
+close \- close a device descriptor
+.SH SYNOPSIS
+.B close device
+.fi
+.SH DESCRIPTION
+.I Close
+takes as an argument a device descriptor and invokes the system call
+\f2close\f1 on that device.
+Each device has a reference count that is incremented by the system
+call \f2open\f1 and decremented by the system call \f2close\f1.
+Thus, if the device has been opened \f2n\f1 times, the user must
+invoke the \f2close\f1 command \f2n\f1 times to close it.
+.SH SEE ALSO
+devs(1), lf(1), read(1), shutdown(1), write(1)

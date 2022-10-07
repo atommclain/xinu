@@ -1,0 +1,26 @@
+.TH RENAME 2
+.SH NAME
+rename \- change the name of an object, usually a file
+.SH SYNOPSIS
+.B int rename(oldname, newname)
+.br
+.B char	*oldname;
+.br
+.B char	*newname;
+.fi
+.SH DESCRIPTION
+.I Rename
+changes the name of an object.
+Argument \f2oldname\f1 gives the name of an existing object and argument
+\f2newname\f1 gives a new name for that object.
+.I Rename
+maps names through the syntactic namespace and then invokes the
+control function \f2FLRENAME\f1 on the underlying device.
+Note that
+.I rename
+does not provide copying objects across device boundaries.
+The intent is to provide only for changing names while objects
+stay resident on a given device and allow users to implement
+copy operations separately if desired.
+.SH SEE ALSO
+access(2), control(2), open(2), nam(4)

@@ -1,0 +1,26 @@
+.TH SHUTDOWN 2
+.SH NAME
+shutdown \- shutdown the system
+.SH SYNOPSIS
+.B int
+.B shutdown(quit)
+.nf
+.B int (*quit)();
+.fi
+.SH DESCRIPTION
+.I Shutdown
+gracefully terminates Xinu by flushing all disk buffers, closing all
+local files, and making the cursor visible.
+A call to \f2shutdown\f1 terminates Xinu, killing all processes, removing
+all resources that Xinu allocated (e.g., semaphores or files), and
+returning control to the underlying system.
+.PP
+Argument \f2quit\f1 gives the address of a function to be executed
+once the system is quiescent.
+Possible values for \f2quit\f1 include:
+\f2start\f1, to restart (i.e., reboot) Xinu,
+\f2macboot\f1, to reboot the Macintosh system and enter the Macintosh
+finder, or
+\f2xexit\f1, to exit Xinu and return to the Macintosh finder.
+.SH SEE ALSO
+kill(2), shutdown(1)

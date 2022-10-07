@@ -1,0 +1,17 @@
+.TH EJECT 1
+.SH NAME
+eject \- eject a floppy disk from a disk drive
+.SH SYNOPSIS
+.B eject devicename
+.fi
+.SH DESCRIPTION
+.I Eject
+causes the system to physically eject a floppy disk from a disk
+drive.
+Argument \f2devicename\f1 specifies a Xinu device that corresponds to a
+floppy disk.
+\f2Eject\f1 maps \f2devicename\f1 through the namespace to select the
+drive from which the disk should be ejected.
+After ejection, the device is no longer available for reading or writing.
+.SH SEE ALSO
+devs(1), format(1), mount(1), nam(4)

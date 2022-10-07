@@ -1,0 +1,26 @@
+.TH SEND 2
+.SH NAME
+send \- send a (longword) message to a process
+.SH SYNOPSIS
+.nf
+.B int send(pid, msg)
+.B int pid;
+.B long msg;
+.fi
+.SH DESCRIPTION
+.I Send
+sends the longword message
+.I msg
+to the process with id
+.I pid.
+A process may have at most one outstanding message that has
+not been received.
+.PP
+.I Send
+returns SYSERR if
+.I pid
+is invalid or if the process already has a message waiting
+that has not been received.
+Otherwise, it sends the message and returns OK.
+.SH SEE ALSO
+preceive(2), psend(2), receive(2), recvtim(2), recvclr(2), sendf(2)

@@ -1,0 +1,49 @@
+.TH COLOR 1
+.SH NAME
+color \- display or change color parameters for the standard output window
+.SH SYNOPSIS
+.B color [foreground [background [plane]]]
+.fi
+.SH DESCRIPTION
+Without any arguments,
+.I color
+prints (in decimal) on its standard error device the numeric values
+associated with the colors of foreground, background, and the color
+plane of the window associated with the standard output device.
+Given numeric arguments,
+.I color
+sets the foreground and background colors and (optionally) the color
+plane.
+Because output from
+.I color
+appears on its standard error device, one can redirect standard output
+(and hence the effect of color change)
+to an arbitrary window while still receiving messages in the shell window.
+.PP
+This version of the color command supports only eight colors (plus a
+value of zero that leaves the current color unchanged):
+.sp
+.in 2i
+.nf
+.ft C
+ 0 - no color change
+ 1 - yellow
+ 2 - magenta
+ 3 - red
+ 4 - cyan
+ 5 - green
+ 6 - blue
+30 - white
+33 - black
+.in 0i
+.ft P
+.fi
+.PP
+Any numeric argument less than 30 is mapped to the required internal
+value used in the firmware by multiplying it by 68 and adding 1.
+.PP
+When used with a black and white monitor, all colors except white map
+to black.
+.SH DIAGNOSTICS
+If the standard output device is not a window, \f2color\f1 prints and
+error message on the standard error device.

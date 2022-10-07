@@ -1,0 +1,13 @@
+.TH HALT 2
+.SH NAME
+halt \- halt Xinu and enter the debugger
+.SH SYNOPSIS
+.B halt()
+.SH DESCRIPTION
+.I Halt
+terminates processing and enters the debugger.
+Because \f2halt\f1 causes all processes and devices to cease execution,
+it should only be called in emergencies.
+Internally, \f2halt\f1 simulates a level-7 interrupt.
+.SH SEE ALSO
+debug(1)

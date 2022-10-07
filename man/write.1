@@ -1,0 +1,20 @@
+.TH WRITE 1
+.SH NAME
+write \- write from standard input to a device
+.SH SYNOPSIS
+.B write name count
+.fi
+.SH DESCRIPTION
+.I Write
+uses the system call
+.I nammap
+to map argument
+.I name
+into a device descriptor and then copies
+.I count
+bytes from standard input to the device.
+\f2Write\f1 is useful for debugging device drivers.
+When used with a disk device, argument \f2count\f1 specifies a disk
+block address.
+.SH SEE ALSO
+close(1), mount(1), nam(4), nammap(2), read(1), write(2)

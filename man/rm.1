@@ -1,0 +1,17 @@
+.TH RM 1
+.SH NAME
+rm \- remove a file
+.SH SYNOPSIS
+.B rm filename
+.fi
+.SH DESCRIPTION
+.I Rm
+removes (destroys) the file with name
+.I filename.
+.I Rm
+uses the namespace when accessing files and then invokes the
+system call \f2control\f1 to remove the file.
+Once a file has been removed it is no longer accessible; there
+is no way to recover the data.
+.SH SEE ALSO
+control(2), cp(1), mv(1)

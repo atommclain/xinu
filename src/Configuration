@@ -1,0 +1,135 @@
+/* Configuration - (device configuration specifications) */
+
+/* "type" declarations for both real- and pseudo-devices */
+
+/* Macintosh keyboard */
+key:
+	on VIA		-i ionull	-o ioerr	-c ioerr
+			-r ioerr	-w ioerr	-s ioerr
+			-n ioerr	-g ioerr	-p ioerr
+			-iint keyiin	-oint ioerr
+
+/* Console window device with simple text drawing */
+con:
+	on SCREEN	-i coninit	-o ioopen	-c ioerr
+			-r conread	-w conwrite	-s ioerr
+			-n concntl	-g congetc	-p conputc
+			-iint ioerr	-oint ioerr	-csr 0
+			-ivec 0		-ovec 0
+
+/* Console window device with window operations */
+cwin:
+	on SCREEN	-i coninit	-o ioopen	-c ioerr
+			-r winread	-w winwrite	-s ioerr
+			-n wincntl	-g wingetc	-p winputc
+			-iint ioerr	-oint ioerr	-csr 0
+			-ivec 0		-ovec 0
+
+/* Window master pseudo-device */
+winm:
+	on SCREEN	-i ionull	-o winopen	-c ioerr
+			-r ioerr	-w ioerr	-s ioerr
+			-n ioerr	-g ioerr	-p ioerr
+			-iint ioerr	-oint ioerr	-csr 0
+			-ivec 0		-ovec 0
+
+/* Window pseudo-device */
+win:
+	on SCREEN	-i wininit	-o ioerr	-c winclose
+			-r winread	-w winwrite	-s ioerr
+			-n wincntl	-g wingetc	-p winputc
+			-iint ioerr	-oint ioerr	-csr 0
+			-ivec 0		-ovec 0
+
+/* Floppy disk */
+dsk:
+	on SONY		-i dsinit	-o ioerr	-c ioerr
+			-r dsread	-w dswrite	-s ioerr
+			-n dscntl	-g ioerr	-p ioerr
+			-iint dsinter	-oint dsinter
+
+/* Local file system master pseudo-device */
+lfm:
+	on MAC		-i ionull	-o lfopen	-c ioerr
+			-r ioerr	-w ioerr	-s ioerr
+			-n lfcntl	-g ioerr	-p ioerr
+			-iint ioerr	-oint ioerr
+
+/* Local file pseudo-device */
+lf:
+	on MAC		-i lfinit	-o ioerr	-c lfclose
+			-r lfread	-w lfwrite	-s lfseek
+			-n lfcntl	-g lfgetc	-p lfputc
+			-iint lfinter	-oint lfinter
+
+/* Standard input/output pseudo-device */
+sio:
+	on PROCESS	-i ionull	-o sioopen	-c sioclose
+			-r sioread	-w siowrite	-s sioseek
+			-n siocntl	-g siogetc	-p sioputc
+			-iint ioerr	-oint ioerr	-csr 0
+			-ivec 0		-ovec 0
+
+/* Name system (topmost level of name resolution mechanism) */
+nam:
+	on TOP		-i naminit	-o namopen	-c ioerr
+			-r ioerr	-w ioerr	-s ioerr
+			-n ioerr	-g ioerr	-p ioerr
+			-iint ioerr	-oint ioerr	-csr 0
+			-ivec 0		-ovec 0
+
+%
+
+/* Device definitions */
+
+CONSOLE		is con	on SCREEN
+STDIN		is sio	on PROCESS
+STDOUT		is sio	on PROCESS
+STDERR		is sio	on PROCESS
+KEYBOARD	is key	on VIA		csr=0xefe1fe
+
+/* Physical disks (internal and external) */
+
+DISK1		is dsk	on SONY		csr=1
+DISK2		is dsk	on SONY		csr=2
+
+/* Local file master device */
+
+LFILSYS		is lfm	on MAC
+
+/* Pseudo-device slots for local files */
+
+LFILE1		is lf	on MAC
+LFILE2		is lf	on MAC
+LFILE3		is lf	on MAC
+LFILE4		is lf	on MAC
+LFILE5		is lf	on MAC
+
+/* Window master device */
+
+WINDOW		is winm	on SCREEN
+
+/* Pseudo-device slots for windows */
+
+WINDOW1		is win	on SCREEN
+WINDOW2		is win	on SCREEN
+WINDOW3		is win	on SCREEN
+WINDOW4		is win	on SCREEN
+WINDOW5		is win	on SCREEN
+WINDOW6		is win	on SCREEN
+
+/* Pseudo-device for the abstract (file) name space */
+
+NAMESPACE	is nam	on TOP
+
+%
+
+/* Configuration and Size Constants */
+
+#define	NPROC	    30			/* number of user processes	*/
+#define	NSEM	    50			/* number of semaphores		*/
+#define	MEMMARK				/* define if memory marking used*/
+#define	STKCHK				/* resched checks stack overflow*/
+#define MACHEAP	    (70*1024L)		/* space reserved for Mac OS	*/
+#define	PATHSEP     '/'			/* file pathname separator	*/
+#define	VERSION	    "6.9b (1/1/89)"	/* label printed at startup	*/

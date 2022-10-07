@@ -1,0 +1,25 @@
+.TH SHUTDOWN 1
+.SH NAME
+shutdown \- shutdown the Xinu system
+.SH SYNOPSIS
+.B shutdown [action]
+.fi
+.SH DESCRIPTION
+.I Shutdown
+terminates the Xinu operating system, killing all processes, releasing all
+resources (including main memory and windows), and completely destroying
+all record of any computation in progress.
+Argument \f2action\f1 describes the action to be taken after Xinu has been
+terminated.
+It can be any of the following:
+.sp
+	-r \- restart (reboot) Xinu again
+.br
+	-m \- reboot the Macintosh, allowing the finder to run
+.br
+	-q \- exit Xinu and return to the Macintosh finder
+.sp
+\f2Shutdown\f1 is not normally invoked by users.
+However, it is useful when trying to run experimental systems.
+.SH SEE ALSO
+close(1), debug(1), kill(2), shutdown(2), sync(1)

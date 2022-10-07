@@ -1,0 +1,18 @@
+.TH LOGOUT 1
+.SH NAME
+logout \- leave the shell
+.SH SYNOPSIS
+.B logout
+.fi
+.SH DESCRIPTION
+.I Logout
+allows the user to terminate the command interpreter (shell) and leave
+command interpretation.
+Upon encountering
+.I logout,
+the process executing the shell terminates.
+When invoked from a subshell,
+.I logout
+returns to the shell from which the subshell was invoked.
+.SH SEE ALSO
+exit(1), sh(1)

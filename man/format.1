@@ -1,0 +1,25 @@
+.TH FORMAT 1
+.SH NAME
+format \- format a floppy disk
+.SH SYNOPSIS
+.B format name
+.fi
+.SH DESCRIPTION
+.I Format
+takes a device name as an argument, maps the name to a device using
+the syntactic namespace, and formats the floppy disk it finds in that
+device.
+If the argument
+.I name
+does not map to a floppy disk device, or no disk is present,
+.I format
+prints an error message.
+.SH BUGS
+Because the disk routines in ROM require mutual exclusion with interrupts
+enabled (i.e., the hardware cannot execute any other code while formatting
+a disk), \f2format\f1 sets the priority of the process that executes it
+to the highest in the system.
+From the user's point of view, it means \f2format\f1 cannot be executed in
+background.
+.SH SEE ALSO
+eject(1)

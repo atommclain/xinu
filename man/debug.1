@@ -1,0 +1,15 @@
+.TH DEBUG 1
+.SH NAME
+debug \- halt the processor and trap to the debugger
+.SH SYNOPSIS
+.B debug
+.fi
+.SH DESCRIPTION
+.I Debug
+halts the processor and allows the user to enter a debugger.
+.SH BUGS
+To make it useful for debugging the operating system,
+.I debug
+interrupts processing without attempting to flush I/O buffers.
+.SH SEE ALSO
+halt(2), shutdown(1)

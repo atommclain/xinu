@@ -1,0 +1,45 @@
+.TH DSK 4
+.SH NAME
+dsk \- floppy disk driver
+.SX driver dsk
+,IX dsk
+.SH SYNOPSIS
+.nf
+.B #include <disk.h>
+.sp
+.B read(device buffer, sector)
+.B write(device, buffer, sector)
+.B control(device, function, arg1, arg2)
+.B init(device)
+.SH DESCRIPTION
+.PP
+The \f2dsk\f1 device driver provides input and output for
+the flopy disk device.
+Unlike most drivers, the floppy disk driver interprets the third
+argument to \f2read\f1 and \f2write\f1 requests as a disk block number,
+not as a length.
+.PP
+The upper-half behaves as follows:
+.TP
+.B read(device,buffer,block)
+Reads the data from the disk block number \f2block\f1 into the
+area starting at address \f2buffer\f1.
+.TP
+.B write(device,buffer,block)
+Writes one block of data from the user's \f2buffer\f1
+to the floppy disk at block number \f2block\f1.
+.TP
+.B init(device)
+Initializes the driver.
+.TP
+.B control(device,function)
+Controls the driver and provides non-transfer operations.
+The valid functions are:
+.nf
+.in +0.2i
+DSKSYNC \- synchronize the disk by waiting until all pending I/O completes.
+DSKEJECT \- eject the disk from the drive.
+.fi
+.in -0.2i
+.SH SEE ALSO
+sync(1)

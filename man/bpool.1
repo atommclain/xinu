@@ -1,0 +1,15 @@
+.TH BPOOL 1
+.SH NAME
+bpool \- print information about buffer pools
+.SH SYNOPSIS
+.B bpool
+.fi
+.SH DESCRIPTION
+.I Bpool
+extracts information from the buffer pool table and formats it
+in a readable form.
+Each line of output contains information about a single buffer
+pool, and shows the pool id, buffer size, semaphore, and number of buffers
+currently in the pool.
+.SH SEE ALSO
+getbuf(2), freebuf(2), mkpool(2)

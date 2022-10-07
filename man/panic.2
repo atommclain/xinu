@@ -1,0 +1,42 @@
+.TH PANIC 2
+.SH NAME
+panic \- abort processing due to severe error
+.SH SYNOPSIS
+.nf
+.B int panic(message)
+.B char *message;
+.fi
+.SH DESCRIPTION
+.I Panic
+will print the character string
+.I message
+on the console, dump the machine registers and top few stack locations,
+and halt the processor.
+It uses
+.I kprintf
+rather than
+.I printf,
+so it may be called anywhere in
+the kernel (e.g., from an interrupt routine that may be executed
+by the null process).
+Panic halts and waits for a single specification character to be typed.
+The possible specification characters and meanings are:
+.sp
+.in 1i
+.nf
+.ft C
+1 - restore machine state and continue
+2 - debug
+3 - reboot Xinu
+4 - reboot the Macintosh
+5 - exit Xinu and return to Macintosh finder
+.in 0i
+.ft P
+.fi
+.PP
+There are alternate entry points to
+.I panic
+that are invoked by branch to location zero, illegal interrupts,
+or processor exceptions (traps).
+.SH SEE ALSO
+printf(3)

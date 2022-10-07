@@ -1,0 +1,25 @@
+.TH GETDEV 2
+.SH NAME
+getdev \- return device descriptor to which a process' standard I/O maps
+.SH SYNOPSIS
+.B int
+.B getdev(pid,siodev)
+.nf
+.B int pid;
+.B int siodev;
+.fi
+.SH DESCRIPTION
+.I Getdev
+returns the device descriptor of the device to which a process'
+standard I/O connects.
+Argument
+.I pid
+specifies a process, and argument
+.I siodev
+specifies either the standard input device, the standard output device,
+or the standard error device.
+.I Getdev
+allows a process to identify the actual device being used for I/O,
+even if the process iniherits the device from the shell.
+.SH SEE ALSO
+open(2)

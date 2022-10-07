@@ -1,0 +1,17 @@
+.TH MEM 1
+.SH NAME
+mem \- print information about current memory use
+.SH SYNOPSIS
+.B mem
+.fi
+.SH DESCRIPTION
+.I Mem
+extracts information from the system's memory management data structures
+and summarizes it in a readable form.
+The output gives the sizes of memory segments when Xinu was first loaded,
+including remaining heap space.
+It then summarizes current use, showing how much memory is allocated for
+process stacks, Xinu heap storage, and firmware heap storage.
+Finally, \f2mem\f1 summarizes blocks of memory on the Xinu free list.
+.SH SEE ALSO
+getmem(2) freemem(2)

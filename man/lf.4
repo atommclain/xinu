@@ -1,0 +1,96 @@
+.TH LF 4
+.SH NAME
+lf \-  local file system pseudo-device
+.SX driver lf
+.IX lf
+.SH SYNOPSIS
+.nf
+.B open(device, name, mode)
+.B close(device)
+.B read(device, buffer, count)
+.B write(device, buffer, count)
+.B getc(device)
+.B putc(device, char)
+.B seek(device, position)
+.B control(device, function, arg1, arg2)
+.B init(device)
+.SH DESCRIPTION
+.PP
+The \f2lf\f1 pseudo-device driver provides access to files on a local
+disk through the Macintosh file system.
+The driver provides a master pseudo-device that can be opened to obtain
+a connection with a file as well as driver routines for individual file
+pseudo-devices through which a process communicates with an open file.
+.PP
+The upper-half behaves as follows:
+.TP
+.B read(device,buffer,count)
+Reads \f2count\f1 bytes of data from the file into the area starting at
+address \f2buffer\f1.
+\f2Read\f1 returns a count of bytes read, which may be less than the
+number requested if the end of the file is reached during the operation.
+\f2Read\f1 returns \f2EOF\f1 if it reaches end of file without reading
+anything.
+.TP
+.B write(device,buffer,block)
+Writes \f2count\f1 bytes of data from the user's \f2buffer\f1
+to the file starting at the current position.
+.TP
+.B putc(device,ch)
+Writes character \f2ch\f1 to the file at the current position.
+.TP
+.B getc(device)
+Reads one character from the file and returns it to the caller.
+\f2Getc\f1 returns \f2EOF\f1 when it reaches the end of the file.
+.TP
+.B open(LFILSYS,name,mode)
+Opens a local file.
+\f2Name\f1 must be a full pathname separated by
+slashes that does not begin with a slash.
+The first component of the pathname must be the volume name
+(the name of the disk on which the file resides),
+and the name must have at least one more component
+(e.g., "HD/test", or
+"Xinu Disk/src/sys/sys/getpid.c").
+If the file is to be created, directories (folders) will be created
+as required by the pathname.
+\f2Open\f1 is the only operation valid for the file system master
+pseudo-device.
+If successful, it returns the descriptor of a local file pseudo-device.
+.TP
+.B close(dev)
+Closes a local file pseudo-device.
+.TP
+.B seek(dev,pos)
+Changes the current position of local file pseudo-device to \f2pos\f1
+(a longword).
+The next data transfer (e.g., \f2read\f1, \f2write\f1, \f2getc\f1, \f2putc\f1)
+will begin at offset \f2pos\f1.
+.TP
+.B init(device)
+Initializes a local file pseudo-device.
+.TP
+.B control(device,function,arg1,arg2)
+Controls the driver and provides non-transfer operations.
+The valid functions are:
+.nf
+.in +0.2i
+DSKSYNC \- wait for currently pending I/O requests to complete.
+FLACCESS \- check file accessibility.
+FLREMOVE \- delete file named by arg1.
+FLRENAME \- Rename file named arg1 to arg2.
+Rename will fail if the names refer to different volumes (different disks)
+or if they refer to different directories.
+.fi
+.in -0.2i
+.SH NOTES
+The Macintosh file system uses carriage return (\f2CR\f1) to terminate lines
+while Xinu uses line feed (\f2LF\f1).
+To accommodate the difference, the \f2lf\f1 driver honors file attribute
+\f2lf_crlf\f1, translating \f2CR\f1 to \f2LF\f1 and
+vice versa if the Boolean is \f2TRUE\f1.
+.SH BUGS
+The current implementation for \f2FLACCESS\f1 merely returns \f2OK\f1
+without interrogating the Macintosh file system to determine accessibilty.
+.SH SEE ALSO
+sync(1), nam(4)

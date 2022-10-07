@@ -1,0 +1,16 @@
+.TH LF 1
+.SH NAME
+lf \- print status of local file devices
+.SH SYNOPSIS
+.B lf
+.fi
+.SH DESCRIPTION
+.I Lf
+prints the status of all local file pseudo-devices.
+The output includes the local file system semaphore id,
+the Macintosh ROM reference number,
+current position (offset),
+access mode (i.e., whether the file is open for reading or writing),
+and the semaphore associated with the file.
+.SH SEE ALSO
+close(1), devs(1)

@@ -1,0 +1,20 @@
+.TH EXIT 1
+.SH NAME
+exit \- cause the process executing the shell to terminate
+.SH SYNOPSIS
+.B exit
+.fi
+.SH DESCRIPTION
+.I Exit
+causes the process executing the shell to terminate immediately.
+Termination removes the shell process permanently, and ceases the
+command interpretation.
+.I Exit
+is used mostly by shell command scripts to terminate prematurely.
+In an interactive shell, it is equivalent to logging out from the
+computer.
+When invoked from a subshell,
+.I exit
+returns to the shell from which the subshell was invoked.
+.SH SEE ALSO
+logout(1), sh(1)

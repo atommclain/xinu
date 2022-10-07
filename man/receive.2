@@ -1,0 +1,16 @@
+.TH RECEIVE 2
+.SH NAME
+receive \- receive  a (longword) message
+.SH SYNOPSIS
+.nf
+.B long receive()
+.fi
+.SH DESCRIPTION
+.I Receive
+returns the longword
+message sent to a process using SEND(2).
+If no messages are waiting,
+.I receive
+blocks until one appears.
+.SH SEE ALSO
+preceive(2), recvclr(2), recvtim(2), send(2), sendf(2)

@@ -1,0 +1,21 @@
+.TH SYNC 1
+.SH NAME
+sync \- wait for all output to disks to complete
+.SH SYNOPSIS
+.B sync
+.fi
+.SH DESCRIPTION
+.I Sync
+waits for all pending input or output disk requests to complete and
+then returns.
+It is designed to be invoked to force all pending I/O to disk
+before shutting down the system.
+.SH BUGS
+.I Sync
+does not exclude concurrent processing activities.
+Therefore, background processes may create additional disk requests
+after
+.I sync
+executes but before the system is shut down.
+.SH SEE ALSO
+control(2), dsk(4), lf(4), shutdown(1)

@@ -1,0 +1,18 @@
+.TH PWD 1
+.SH NAME
+pwd \- print working directory
+.SH SYNOPSIS
+.B pwd
+.fi
+.SH DESCRIPTION
+.I Pwd
+prints the current ``directory'' name.
+Because all naming is implemented with the syntactic namspace,
+.I pwd
+prints the current default prefix.
+That is, it prints the replacement string associated with the null prefix.
+The prefix can be set using the system call MOUNT(2) or with the
+.I cd
+command.
+.SH SEE ALSO
+mount(1), nam(4), nammap(2), namrepl(2)

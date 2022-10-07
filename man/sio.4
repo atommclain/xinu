@@ -1,0 +1,26 @@
+.TH SIO 4
+.SH NAME
+sio \- standard input and output device
+.SX driver sio
+.IX sio
+.SH SYNOPSIS
+.nf
+.B open(device, name, mode)
+.B close(device)
+.B read(device, buffer, count)
+.B write(device, buffer, count)
+.B getc(device)
+.B putc(device, char)
+.B seek(device, position)
+.B control(device, function, arg1, arg2)
+.SH DESCRIPTION
+.PP
+The \f2sio\f1 device driver implements a pseudo-device that the
+process can use to indirectly reference it's standard input or standard
+output.
+The \f2sio\f1 device performs the specified operation on the underlying
+device whose descriptor is proctab[currpid].pdevs[devtab[device].dvminor].
+That is, it maps the standard I/O descriptor through the process table to
+find a real device descriptor to use.
+.SH SEE ALSO
+setdev(2)

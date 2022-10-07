@@ -1,0 +1,21 @@
+.TH READ 1
+.SH NAME
+read \- read from a device and print data on standard output in hexadecimal
+.SH SYNOPSIS
+.B read name count
+.fi
+.SH DESCRIPTION
+.I Read
+uses the system call
+.I nammap
+to map argument
+.I name
+into a device descriptor, copies
+.I count
+bytes from the device to an internal buffer, and then prints the
+contents of the buffer in hexadecimal.
+.I Read
+is useful for debugging device drivers (when used with the floppy disk
+driver, argument \f2count\f1 is interpreted as the disk block address).
+.SH SEE ALSO
+close(1), mount(1), nam(4), nammap(2), read(2), write(1)

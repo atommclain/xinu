@@ -1,0 +1,16 @@
+.TH PANIC 1
+.SH NAME
+panic \- print a panic message and halt
+.SH SYNOPSIS
+.B panic [message]
+.fi
+.SH DESCRIPTION
+.I Panic
+prints a message and calls the system \f2panic\f1 routine, causing the
+processor to halt.
+It should only be invoked in cases of extreme emergency.
+The optional argument
+.I message
+gives a messgae to be printed instead of the default message.
+.SH SEE ALSO
+panic(2)

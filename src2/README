@@ -1,0 +1,5 @@
+Miscellaneous Macintosh source files
+
+Files in this directory override source files from the distribution
+tape for use in the book.  In particular, chprio is the original, broken
+version.

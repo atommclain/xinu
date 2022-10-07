@@ -1,0 +1,26 @@
+.TH MOUNT 1
+.SH NAME
+mount \- print or modify information in the namespace mapping table
+.SH SYNOPSIS
+.B mount [prefix device replacment]
+.fi
+.SH DESCRIPTION
+With no arguments,
+.I mount
+extracts information from the namespace prefix mapping table and displays
+it in readable form.
+Given three arguments, \f2mount\f1 interprets them as a new entry to be
+added to the table.
+Argument \f2prefix\f1 specifies a name mapping prefix.
+It can be a new prefix or an exact match of an existing prefix.
+\f2Device\f1 is the name of a device to be used for this prefix (see DEVS(1))
+or the special string ``SYSERR'' which means no process can open a name
+that starts with the prefix.
+Finally, argument \f2replacement\f1 gives the replacement string for the
+entry.
+.PP
+\f2Mount\f1 uses the underlying system call MOUNT(2) to insert entries in
+the table, so new items are always inserted just before the first entry
+that would mask their effect.
+.SH SEE ALSO
+cd(1), devs(1), mount(2), nam(4), pwd(1), unmount(1), unmount(2)

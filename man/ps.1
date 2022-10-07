@@ -1,0 +1,17 @@
+.TH PS 1
+.SH NAME
+ps \- print information from the process table at run-time
+.SH SYNOPSIS
+.B ps
+.fi
+.SH DESCRIPTION
+.I Ps
+extracts information from the process table and formats it
+in a readable form.
+Each line of output contains information about a single Xinu process.
+Columns give the process identifier, process name, process state,
+priority, stack range, current stack length, semaphore on which
+the process is waiting, if any, and a message if one has been
+sent to the process.
+.SH SEE ALSO
+kill(1)

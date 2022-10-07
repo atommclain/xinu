@@ -1,0 +1,16 @@
+.TH MV 1
+.SH NAME
+mv \- move a file from one name to another
+.SH SYNOPSIS
+.B mv oldname newname
+.fi
+.SH DESCRIPTION
+.I Mv
+changes the name of a file.
+Argument \f2oldname\f1 specifies and existing name as recognized
+by the namespace (NAM(4)) and argument \f2newname\f1 specifies
+a new name for the file.
+\f2Mv\f1 invokes the underlying system call RENAME(2) which changes
+names but does not copy objects across device boundaries.
+.SH SEE ALSO
+cp(1), rm(1)

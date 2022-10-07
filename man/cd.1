@@ -1,0 +1,26 @@
+.TH CD 1
+.SH NAME
+cd \- change directory
+.SH SYNOPSIS
+.B cd path
+.fi
+.SH DESCRIPTION
+.I Cd
+sets the user's default file directory.
+Because all file naming uses the syntactic namespace,
+.I cd
+implements change of ``directory'' by changing the namespace mapping
+associated with the null prefix.
+If argument
+.I path
+specifies an absolute name (i.e., and name that begins with a slash
+separator),
+.I cd
+replaces the current null prefix mapping with the new one.
+Otherwise,
+.I cd
+appends argument
+.I path
+to the current null prefix mapping.
+.SH SEE ALSO
+pwd(1), nam(4), nammap(2), namrepl(2)

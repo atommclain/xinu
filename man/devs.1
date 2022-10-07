@@ -1,0 +1,16 @@
+.TH DEVS 1
+.SH NAME
+devs \- print information from the device switch table
+.SH SYNOPSIS
+.B devs
+.fi
+.SH DESCRIPTION
+.I Devs
+extracts information from the device switch table and formats it
+in a readable form.
+Each line of output contains information about a device or pseudo-device.
+Columns give the major device number, device name, minor device number,
+reference count, CSR, input and output interrupt vector addresses, and
+the device control block address.
+.SH SEE ALSO
+close(1), lf(1), mount(1)
